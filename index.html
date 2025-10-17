@@ -1,0 +1,1063 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4everTools: Pay Once. Own Forever.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/dec666c4bc2ac137ee26abec65c50df25aeb1867.png">
+
+    <style>
+        :root {
+            --primary: #df1783;
+            --secondary: #8c318f;
+            --accent: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Light Theme */
+        body.light {
+            --bg-color: #f8f9fa;
+            --card-color: #ffffff;
+            --text-color: #1a202c;
+            --subtext-color: #4a5568;
+            --border-color: #e2e8f0;
+        }
+
+        /* Dark Theme */
+        body.dark {
+            --bg-color: #1a202c;
+            --card-color: #2d3748;
+            --text-color: #e2e8f0;
+            --subtext-color: #a0aec0;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .bg-primary { background-color: var(--primary); }
+        .bg-secondary { background-color: var(--secondary); }
+        .text-primary { color: var(--primary); }
+        .border-primary { border-color: var(--primary); }
+        .gradient-bg {
+            background: linear-gradient(145deg, var(--secondary), var(--primary));
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(223, 23, 131, 0.2);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(223, 23, 131, 0.4);
+        }
+        .feature-card, .tool-card, .bg-card, .price-card, .step-icon-bg {
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .feature-card:hover, .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .text-main { color: var(--text-color); }
+        .text-subtle { color: var(--subtext-color); }
+
+        .top-menu-bar {
+            position: sticky;
+            top: 2rem;
+            z-index: 50;
+            max-width: 5xl;
+            margin: 0 auto;
+            width: 90%;
+            background-color: rgba(45, 55, 72, 0.5); /* Semi-transparent dark card color */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem;
+        }
+        body.light .top-menu-bar {
+             background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent light card color */
+        }
+
+        .top-menu-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        #appLogo { height: 42px; width: auto; }
+        #appBrandNameDisplay { font-size: 1.6rem; font-weight: bold; color: var(--text-color); }
+        #appBrandNameDisplay span { color: var(--primary); }
+        .top-menu-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .fab {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--card-color);
+            color: var(--subtext-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        .fab:hover {
+            color: var(--primary);
+            box-shadow: 0 0 10px rgba(223, 23, 131, 0.3);
+        }
+        #loginBtn {
+             background: linear-gradient(145deg, var(--secondary), var(--primary));
+             color: white;
+             font-weight: bold;
+             padding: 0.5rem 1.5rem;
+             border-radius: 0.5rem;
+             transition: all 0.3s ease;
+        }
+        #loginBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(223, 23, 131, 0.4);
+        }
+
+        .browser-container {
+            max-width: 3xl;
+            margin: 3rem auto 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 0.75rem 0.75rem 0 0; /* Only top corners rounded */
+            overflow: hidden;
+        }
+        .browser-chrome {
+            background: #2d3748;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .browser-dot.red { background: #f56565; }
+        .browser-dot.yellow { background: #ecc94b; }
+        .browser-dot.green { background: #48bb78; }
+        .browser-url {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            padding: 0.25rem 0.75rem;
+            color: #a0aec0;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        .browser-content {
+            height: 600px;
+            background: white;
+            border: 0;
+            display: block;
+            width: 100%;
+        }
+        @media (max-width: 768px) { .browser-content { height: 400px; } }
+        @media (min-width: 1024px) { .browser-content { height: 700px; } }
+
+        .slider-container {
+            -ms-overflow-style: none; scrollbar-width: none;
+        }
+        .slider-container::-webkit-scrollbar { display: none; }
+        .tool-card { flex: 0 0 80%; }
+        @media (min-width: 640px) { .tool-card { flex: 0 0 45%; } }
+        @media (min-width: 1024px) { .tool-card { flex: 0 0 30%; } }
+
+        .step-icon-bg {
+            background: var(--card-color);
+            transition: all 0.3s ease;
+            color: #df1783;
+        }
+        .step-icon {
+            transition: all 0.3s ease;
+            color: #df1783;
+        }
+        .step-card:hover .step-icon-bg {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px -5px rgba(223, 23, 131, 0.3);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366F1, #8B5CF6);
+            border-radius: 2px;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px -1px rgba(223, 23, 131, 0.3);
+        }
+
+       .price-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px -12px rgba(223, 23, 131, 0.25);
+        }
+        .price-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+         body.light .price-card.featured {
+             box-shadow: 0 25px 50px -12px rgba(223, 23, 131, 0.25);
+        }
+         body.dark .price-card.featured {
+             box-shadow: 0 25px 50px -12px rgba(223, 23, 131, 0.45);
+        }
+        
+        .best-value-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 4px 16px;
+            font-size: 0.875rem;
+            font-weight: bold;
+            border-radius: 0 0 8px 8px;
+        }
+
+
+        .mission-image {
+            max-width: 880px;
+            width: 100%;
+            height: auto;
+            border-radius: 0.75rem;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #1F2937;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(223, 23, 131, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 0 rgba(223, 23, 131, 0.7);
+            animation: pulse 2s infinite;
+        }
+        
+        .play-button:hover {
+            background: rgba(196, 18, 117, 0.95);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 32px;
+            margin-left: 4px;
+        }
+        
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(223, 23, 131, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(223, 23, 131, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(223, 23, 131, 0);
+            }
+        }
+    </style>
+</head>
+<body class="dark"> <!-- Default to dark theme -->
+
+    <!-- Top Menu Bar Section -->
+    <div class="top-menu-bar">
+        <div class="top-menu-content">
+            <div class="logo-container">
+                <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/73bfb5aecd9f1ee85739b398f2bf330d3e9c390a.png" alt="4everTools Logo">
+                <span id="appBrandNameDisplay" class="hidden sm:inline">
+                    4ever<span style="background: linear-gradient(145deg, #8c318f, #df1783); -webkit-background-clip: text; background-clip: text; color: transparent;">Tools</span>
+                </span>
+            </div>
+            <div class="top-menu-actions">
+
+                <div class="fab" id="homeBtn" title="Home" onclick="window.open('https://4evertools.com', '_blank')"><i class="fa fa-home"></i></div>
+
+
+
+              
+                <!-- Tools Dropdown -->
+                <div class="relative" id="toolsDropdownContainer">
+                    <div class="fab" id="toolsBtn" title="Tools">
+                        <i class="fa fa-caret-square-o-down"></i>
+                    </div>
+                    <div id="toolsDropdown" class="absolute right-0 mt-2 w-56 rounded-md shadow-lg z-10 hidden" style="background-color: var(--card-color); border: 1px solid var(--border-color);">
+                        <div class="py-1">
+                            <a href="/p/productivity-hub" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">Productivity Hub</a>
+                            <a href="/p/finance-manager-pro" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">Finance Manager Pro</a>
+                            <a href="/p/dashlite" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">DashLite</a>
+                            <a href="/p/bookmarks-manager" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">Bookmarks Manager</a>
+                            <a href="/p/ai-assistant" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">AI Assistant</a>
+                        </div>
+                    </div>
+                </div>
+
+
+              
+              
+                <div class="fab" title="Help Center" onclick="showToast('Help center will be available soon!')"><i class="fa fa-info-circle"></i></div>
+                <div class="fab" id="translationToggle" title="Translate to Spanish"><i class="fa fa-globe"></i></div>
+                <div class="fab" id="darkModeToggle" title="Change Theme"><i class="fas fa-moon"></i></div>
+                <button id="loginBtn" class="btn-primary ml-2 hidden sm:block" data-lang-key="loginBtn">View Tools</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="overflow-x-hidden">
+        <!-- Hero Section -->
+        <section class="pt-20 md:pt-32">
+            <div class="container mx-auto px-6 text-center">
+                <span class="text-sm font-extrabold text-primary uppercase tracking-wider" data-lang-key="heroSubtitle">PAY ONCE. OWN FOREVER.</span>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-main mt-4 mb-6 max-w-5xl mx-auto" data-lang-key="heroTitle">Your Digital Toolbox for Work, Productivity, and Independence.</h1>
+                <p class="text-lg md:text-xl text-subtle max-w-3xl mx-auto mb-10" data-lang-key="heroDescription">
+                    Tired of endless subscriptions? 4everTools offers a suite of high-quality, lifetime-access digital tools. Empower your work, boost productivity, and achieve digital independence.
+                </p>
+
+                <div class="flex justify-center gap-4">
+                    <a href="#pricing" class="cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="heroCta">
+                        Explore Lifetime Bundles
+                    </a>
+                </div>
+
+                <!-- Browser-like Video Container -->
+                <div class="browser-container">
+                    <div class="browser-chrome">
+                        <div class="browser-dot red"></div>
+                        <div class="browser-dot yellow"></div>
+                        <div class="browser-dot green"></div>
+                        <div class="browser-url" data-lang-key="demo">
+                           4everTools Digital Suite
+                        </div>
+                    </div>
+                    
+                    <div class="video-container">
+                        <!-- Video thumbnail -->
+                        <img src="https://placehold.co/1200x675/1a202c/e2e8f0?text=4everTools+Suite" alt="4everTools Suite Demo" class="video-thumbnail">
+                        
+                        <!-- Play button -->
+                        <div class="play-button" id="playButton">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        
+                        <!-- Video player -->
+                        <video class="video-player" id="videoPlayer" controls>
+                            <source src="https://player.vimeo.com/external/370331493.sd.mp4?s=ada720b5a8e5c7db82cec3c9d3bd7c7b1e1e2e2a&profile_id=139&oauth2_token_id=57447761" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Core Mission Section -->
+        <section class="pt-0 py-20 mb-12 pb-20 bg-card relative">
+            <div class="flex justify-center px-6 md:px-12 pt-12 pb-8">
+                <img src="https://bucket.mlcdn.com/a/3336/3336910/images/d55e1635a37a015340ae65d079238ae4fe1a3424.png" alt="Our mission" class="mission-image">
+            </div>
+            
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-main mb-4" data-lang-key="missionTitle">
+                    More Than an App. <span class="text-primary">It's a Mission.</span>
+                </h3>
+                <p class="text-lg text-subtle max-w-3xl mx-auto mb-10" data-lang-key="missionDescription">
+                     We're on a mission to democratize software. Your one-time purchase doesn't just get you an amazing app—it fuels the creation of an entire ecosystem. You're not just a customer; you're a foundational supporter in the movement against subscription fatigue.
+                </p>
+            </div>
+        </section>
+
+      
+
+        <!-- How It Works Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <!-- How It Works Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center step-card">
+                        <div class="relative">
+                            <div class="w-20 h-20 flex items-center justify-center rounded-full step-icon-bg border-2 border-primary mb-6">
+                                <i data-lucide="box-select" class="w-10 h-10 text-primary"></i>
+                            </div>
+                            <div class="step-number">1</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-main mb-2" data-lang-key="step1Title">Choose Your Tool</h3>
+                        <p class="text-subtle" data-lang-key="step1Desc">Select a single lifetime tool or grab the Forever Bundle for complete access.</p>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center step-card">
+                        <div class="relative">
+                            <div class="w-20 h-20 flex items-center justify-center rounded-full step-icon-bg border-2 border-primary mb-6">
+                                <i data-lucide="rocket" class="w-10 h-10 text-primary"></i>
+                            </div>
+                            <div class="step-number">2</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-main mb-2" data-lang-key="step2Title">Boost Your Workflow</h3>
+                        <p class="text-subtle" data-lang-key="step2Desc">Integrate our powerful apps into your daily tasks for immediate productivity gains.</p>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center step-card">
+                        <div class="relative">
+                            <div class="w-20 h-20 flex items-center justify-center rounded-full step-icon-bg border-2 border-primary mb-6">
+                                <i data-lucide="shield-check" class="w-10 h-10 text-primary"></i>
+                            </div>
+                            <div class="step-number">3</div>
+                        </div>
+                        <h3 class="text-xl font-bold text-main mb-2" data-lang-key="step3Title">Own Your Digital Independence</h3>
+                        <p class="text-subtle" data-lang-key="step3Desc">Enjoy lifetime updates and freedom from recurring fees. Your tools, your data, forever.</p>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="text-center mt-16">
+                    <div class="flex justify-center gap-4">
+                        <a href="#pricing" class="cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="getStartedCta">
+                           Get Started for Life
+                        </a>
+                    </div>
+                    <p class="text-subtle mt-4 text-sm" data-lang-key="joinUsers">Join thousands of empowered users today</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 md:py-28 relative bg-cover bg-center" style="background-image: url('https://bucket.mlcdn.com/a/3336/3336910/images/dc515a92554f439d325e88e31acc0fd25e4f44da.jpeg');">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="featuresTitle">A Complete Toolbox for Every Need.</h3>
+                    <p class="text-lg text-gray-300 mt-4 max-w-3xl mx-auto" data-lang-key="featuresDesc">From organizing your life to managing finances and leveraging AI, we have a lifetime tool designed for you.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Productivity+Hub" alt="Productivity Hub" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature1Title">Productivity Hub</h4>
+                        <p class="text-subtle" data-lang-key="feature1Desc">Notion-inspired dashboard for your tasks, notes, projects, and goals.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Finance+Manager" alt="Finance Manager Pro" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature2Title">Finance Manager Pro</h4>
+                        <p class="text-subtle" data-lang-key="feature2Desc">Take control with an intuitive budget, cash flow, and income tracker.</p>
+                    </div>
+                     <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=DashLite" alt="DashLite" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature3Title">DashLite</h4>
+                        <p class="text-subtle" data-lang-key="feature3Desc">Create custom desktop dashboards for quick access to your most important analytics.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=AI+Assistant" alt="AI Assistant" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature4Title">Professional AI Assistant</h4>
+                        <p class="text-subtle" data-lang-key="feature4Desc">Leverage AI with your own API key (BYOK) for a secure, private assistant.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Bookmarks" alt="Bookmarks Manager" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature5Title">Bookmarks Manager</h4>
+                        <p class="text-subtle" data-lang-key="feature5Desc">Organize, save, and tag your web links and research resources efficiently.</p>
+                    </div>
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Lifetime+Promise" alt="Lifetime Ownership" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature6Title">The Forever Promise</h4>
+                        <p class="text-subtle" data-lang-key="feature6Desc">All tools include lifetime updates, multi-device sync, and our commitment to no subscriptions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 md:py-28">
+            <div class="container mx-auto px-6 text-center">
+                <h3 class="text-3xl md:text-4xl font-bold text-main" data-lang-key="pricingTitle">Find Your Forever Plan.</h3>
+                <p class="text-lg text-subtle max-w-3xl mx-auto mt-4 mb-12" data-lang-key="pricingDesc">Whether you need one tool, all of them, or flexible access, we have a simple plan for you. No hidden fees, ever.</p>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+                    <!-- Pricing Card 1: Single Tool -->
+                    <div class="price-card rounded-lg p-8 h-full flex flex-col">
+                        <h4 class="text-2xl font-bold text-main" data-lang-key="price1Title">Single Tool</h4>
+                        <div class="flex items-baseline justify-center my-6">
+                            <span class="text-5xl font-extrabold text-main">$49</span>
+                            <span class="ml-2 text-xl font-medium text-subtle" data-lang-key="oneTime">/ one-time</span>
+                        </div>
+                        <ul class="text-left space-y-3 text-subtle flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price1Feat1">Lifetime access to <strong>one tool</strong></span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price1Feat2">All future updates for that tool</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price1Feat3">Perfect for specific needs</span></li>
+                        </ul>
+                        <a href="#" class="block w-full mt-8 cta-button bg-primary/20 text-primary border border-primary/30 font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price1Cta">Choose Your Tool</a>
+                    </div>
+                    
+                    <!-- Pricing Card 2: Forever Bundle (Featured) -->
+                    <div class="price-card featured rounded-lg p-8 h-full flex flex-col">
+                        <div class="best-value-badge" data-lang-key="bestValue">BEST VALUE</div>
+                        <h4 class="text-2xl font-bold text-main mt-6" data-lang-key="price2Title">Forever Bundle</h4>
+                        <div class="flex items-baseline justify-center my-6">
+                            <span class="text-5xl font-extrabold text-main">$149</span>
+                            <span class="ml-2 text-xl font-medium text-subtle" data-lang-key="oneTime">/ one-time</span>
+                        </div>
+                        <ul class="text-left space-y-3 text-subtle flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price2Feat1">Lifetime access to <strong>ALL tools</strong></span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price2Feat2"><strong>All future products</strong> included</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price2Feat3">Massive one-time saving</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price2Feat4">Become a foundational supporter</span></li>
+                        </ul>
+                        <a href="#" class="block w-full mt-8 cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price2Cta">Own Everything Forever</a>
+                    </div>
+
+                    <!-- Pricing Card 3: Monthly -->
+                    <div class="price-card rounded-lg p-8 h-full flex flex-col">
+                        <h4 class="text-2xl font-bold text-main" data-lang-key="price3Title">All-Access Pass</h4>
+                        <div class="flex items-baseline justify-center my-6">
+                            <span class="text-5xl font-extrabold text-main">$19</span>
+                            <span class="ml-2 text-xl font-medium text-subtle" data-lang-key="perMonth">/ month</span>
+                        </div>
+                        <ul class="text-left space-y-3 text-subtle flex-grow">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price3Feat1">Access all current tools</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price3Feat2">New tools as they launch</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price3Feat3">Cancel anytime</span></li>
+                        </ul>
+                        <a href="#" class="block w-full mt-8 cta-button bg-primary/20 text-primary border border-primary/30 font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price3Cta">Subscribe Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 md:py-28 bg-primary text-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <h3 class="text-3xl md:text-4xl font-bold text-center text-white mb-12" data-lang-key="faqTitle">Frequently Asked Questions</h3>
+                
+                <div x-data="{ open: null }" class="text-white">
+                    <div class="border-b border-white/20">
+                        <button @click="open = (open === 1 ? null : 1)" class="w-full text-left py-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-white" data-lang-key="faq1q">What does 'lifetime access' mean?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-white" :class="{'rotate-180': open === 1}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === 1" x-collapse.duration.300ms class="pb-6 text-white/80" data-lang-key="faq1a">
+                            It means you pay once and you get access to the product(s) you purchased and all their future updates for as long as the product exists. No recurring fees, ever. It's a one-and-done deal.
+                        </div>
+                    </div>
+                    <div class="border-b border-white/20">
+                        <button @click="open = (open === 2 ? null : 2)" class="w-full text-left py-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-white" data-lang-key="faq2q">What is BYOK (Bring Your Own Key)?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-white" :class="{'rotate-180': open === 2}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === 2" x-collapse.duration.300ms class="pb-6 text-white/80" data-lang-key="faq2a">
+                            It means you use your own API key from services like OpenAI for our AI Assistant. This gives you full control over your usage and data, ensuring maximum privacy and security. You only pay for what you use directly to the AI provider.
+                        </div>
+                    </div>
+                    <div class="border-b border-white/20">
+                        <button @click="open = (open === 3 ? null : 3)" class="w-full text-left py-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-white" data-lang-key="faq3q">Are these native apps or web apps?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-white" :class="{'rotate-180': open === 3}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === 3" x-collapse.duration.300ms class="pb-6 text-white/80" data-lang-key="faq3a">
+                            All 4everTools products are cloud-based web applications. This ensures your data is always synced and accessible across all your devices (laptop, tablet, phone) through any modern web browser.
+                        </div>
+                    </div>
+                    <div class="border-b border-white/20">
+                        <button @click="open = (open === 4 ? null : 4)" class="w-full text-left py-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-white" data-lang-key="faq4q">What happens to my data? Is it private and secure?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-white" :class="{'rotate-180': open === 4}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === 4" x-collapse.duration.300ms class="pb-6 text-white/80" data-lang-key="faq4a">
+                            Absolutely. We believe in data ownership. Your data is yours, stored securely. For tools that operate locally, it never leaves your device. For cloud tools, it's encrypted. We will never see, sell, or share your data.
+                        </div>
+                    </div>
+                     <div class="border-b border-white/20">
+                        <button @click="open = (open === 5 ? null : 5)" class="w-full text-left py-6 flex justify-between items-center">
+                            <span class="text-lg font-semibold text-white" data-lang-key="faq5q">Which tools are currently available?</span>
+                            <svg class="w-6 h-6 transform transition-transform text-white" :class="{'rotate-180': open === 5}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div x-show="open === 5" x-collapse.duration.300ms class="pb-6 text-white/80" data-lang-key="faq5a">
+                            Our current suite includes the Productivity Hub, Finance Manager Pro, Professional AI Assistant (BYOK), and the Bookmarks Manager. DashLite and other tools are in development. Buying the Forever Bundle gives you access to them as soon as they launch!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Tools Section -->
+        <section class="py-20 md:py-28">
+            <div class="container mx-auto">
+                 <div class="text-center mb-12 px-6">
+                    <h3 class="text-3xl md:text-4xl font-bold text-main" data-lang-key="moreToolsTitle">Explore the 4everTools Suite</h3>
+                    <p class="text-lg text-subtle mt-4 max-w-2xl mx-auto" data-lang-key="moreToolsDesc">Part of the "Democratizing Digital Solutions" ecosystem.</p>
+                </div>
+                
+                <div class="relative">
+                    <div id="slider" class="slider-container flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-6">
+                        <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Productivity+Hub" alt="Productivity Hub Thumbnail" class="w-full h-48 object-cover">
+                           <div class="p-6">
+                               <div class="flex justify-between items-start">
+                                   <div>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool1Title">Productivity Hub</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool1Desc">Your all-in-one productivity suite.</p>
+                                   </div>
+                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
+                               </div>
+                               <div class="flex gap-2 mt-4">
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Productivity</span>
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
+                               </div>
+                           </div>
+                       </a>
+                        <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Finance+Manager" alt="Finance Manager Thumbnail" class="w-full h-48 object-cover">
+                           <div class="p-6">
+                               <div class="flex justify-between items-start">
+                                   <div>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool2Title">Finance Manager Pro</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool2Desc">Track budgets, income, and cash flow.</p>
+                                   </div>
+                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
+                               </div>
+                               <div class="flex gap-2 mt-4">
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Finance</span>
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
+                               </div>
+                           </div>
+                       </a>
+                       <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=AI+Assistant" alt="AI Assistant Thumbnail" class="w-full h-48 object-cover">
+                           <div class="p-6">
+                               <div class="flex justify-between items-start">
+                                   <div>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool3Title">AI Assistant (BYOK)</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool3Desc">Your private, secure AI workspace.</p>
+                                   </div>
+                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
+                               </div>
+                               <div class="flex gap-2 mt-4">
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">AI</span>
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
+                               </div>
+                           </div>
+                       </a>
+                       <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Bookmarks" alt="Bookmarks Manager Thumbnail" class="w-full h-48 object-cover">
+                           <div class="p-6">
+                               <div class="flex justify-between items-start">
+                                   <div>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool4Title">Bookmarks Manager</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool4Desc">Organize your digital resources.</p>
+                                   </div>
+                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
+                               </div>
+                               <div class="flex gap-2 mt-4">
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Organization</span>
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
+                               </div>
+                           </div>
+                       </a>
+                        <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=DashLite" alt="DashLite Thumbnail" class="w-full h-48 object-cover">
+                           <div class="p-6">
+                               <div class="flex justify-between items-start">
+                                   <div>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool5Title">DashLite</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool5Desc">Custom desktop dashboards.</p>
+                                   </div>
+                                   <span class="text-xs bg-secondary text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="planned">Planned</span>
+                               </div>
+                               <div class="flex gap-2 mt-4">
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Analytics</span>
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
+                               </div>
+                           </div>
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-card border-t border-border-color">
+        <div class="container mx-auto px-6 py-8 text-center text-subtle">
+            <p data-lang-key="footerText">&copy; 2025 4everTools. Part of the Democratizing Digital Solutions movement.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="#" class="hover:text-main" data-lang-key="privacy">Privacy Policy</a>
+                <a href="#" class="hover:text-main" data-lang-key="terms">Terms of Service</a>
+                <a href="#" class="hover:text-main" data-lang-key="contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AlpineJS for FAQ dropdown -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // --- THEME SWITCHER ---
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const themeIcon = darkModeToggle.querySelector('i');
+            const body = document.body;
+
+            if (localStorage.getItem('theme') === 'light') {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark');
+                body.classList.toggle('light');
+
+                if (body.classList.contains('dark')) {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // --- TOOLS DROPDOWN ---
+            const toolsBtn = document.getElementById('toolsBtn');
+            const toolsDropdown = document.getElementById('toolsDropdown');
+            const toolsDropdownContainer = document.getElementById('toolsDropdownContainer');
+
+            toolsBtn.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent the window click listener from firing immediately
+                toolsDropdown.classList.toggle('hidden');
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!toolsDropdownContainer.contains(event.target) && !toolsDropdown.classList.contains('hidden')) {
+                    toolsDropdown.classList.add('hidden');
+                }
+            });
+
+            // --- TRANSLATION ---
+            const translations = {
+                en: {
+                    loginBtn: "View Tools",
+                    heroSubtitle: "PAY ONCE. OWN FOREVER.",
+                    heroTitle: "Your Digital Toolbox for Work, Productivity, and Independence.",
+                    heroDescription: "Tired of endless subscriptions? 4everTools offers a suite of high-quality, lifetime-access digital tools. Empower your work, boost productivity, and achieve digital independence.",
+                    heroCta: "Explore Lifetime Bundles",
+                    demo: "4everTools Digital Suite",
+                    missionTitle: "More Than an App. <span class='text-primary'>It's a Mission.</span>",
+                    missionDescription: "We're on a mission to democratize software. Your one-time purchase doesn't just get you an amazing app—it fuels the creation of an entire ecosystem. You're not just a customer; you're a foundational supporter in the movement against subscription fatigue.",
+                    step1Title: "Choose Your Tool",
+                    step1Desc: "Select a single lifetime tool or grab the Forever Bundle for complete access.",
+                    step2Title: "Boost Your Workflow",
+                    step2Desc: "Integrate our powerful apps into your daily tasks for immediate productivity gains.",
+                    step3Title: "Own Your Digital Independence",
+                    step3Desc: "Enjoy lifetime updates and freedom from recurring fees. Your tools, your data, forever.",
+                    getStartedCta: "Get Started for Life",
+                    joinUsers: "Join thousands of empowered users today",
+                    featuresTitle: "A Complete Toolbox for Every Need.",
+                    featuresDesc: "From organizing your life to managing finances and leveraging AI, we have a lifetime tool designed for you.",
+                    feature1Title: "Productivity Hub",
+                    feature1Desc: "Notion-inspired dashboard for your tasks, notes, projects, and goals.",
+                    feature2Title: "Finance Manager Pro",
+                    feature2Desc: "Take control with an intuitive budget, cash flow, and income tracker.",
+                    feature3Title: "DashLite",
+                    feature3Desc: "Create custom desktop dashboards for quick access to your most important analytics.",
+                    feature4Title: "Professional AI Assistant",
+                    feature4Desc: "Leverage AI with your own API key (BYOK) for a secure, private assistant.",
+                    feature5Title: "Bookmarks Manager",
+                    feature5Desc: "Organize, save, and tag your web links and research resources efficiently.",
+                    feature6Title: "The Forever Promise",
+                    feature6Desc: "All tools include lifetime updates, multi-device sync, and our commitment to no subscriptions.",
+                    pricingTitle: "Find Your Forever Plan.",
+                    pricingDesc: "Whether you need one tool, all of them, or flexible access, we have a simple plan for you. No hidden fees, ever.",
+                    price1Title: "Single Tool",
+                    oneTime: "/ one-time",
+                    price1Feat1: "Lifetime access to <strong>one tool</strong>",
+                    price1Feat2: "All future updates for that tool",
+                    price1Feat3: "Perfect for specific needs",
+                    price1Cta: "Choose Your Tool",
+                    bestValue: "BEST VALUE",
+                    price2Title: "Forever Bundle",
+                    price2Feat1: "Lifetime access to <strong>ALL tools</strong>",
+                    price2Feat2: "<strong>All future products</strong> included",
+                    price2Feat3: "Massive one-time saving",
+                    price2Feat4: "Become a foundational supporter",
+                    price2Cta: "Own Everything Forever",
+                    price3Title: "All-Access Pass",
+                    perMonth: "/ month",
+                    price3Feat1: "Access all current tools",
+                    price3Feat2: "New tools as they launch",
+                    price3Feat3: "Cancel anytime",
+                    price3Cta: "Subscribe Now",
+                    faqTitle: "Frequently Asked Questions",
+                    faq1q: "What does 'lifetime access' mean?",
+                    faq1a: "It means you pay once and you get access to the product(s) you purchased and all their future updates for as long as the product exists. No recurring fees, ever. It's a one-and-done deal.",
+                    faq2q: "What is BYOK (Bring Your Own Key)?",
+                    faq2a: "It means you use your own API key from services like OpenAI for our AI Assistant. This gives you full control over your usage and data, ensuring maximum privacy and security. You only pay for what you use directly to the AI provider.",
+                    faq3q: "Are these native apps or web apps?",
+                    faq3a: "All 4everTools products are cloud-based web applications. This ensures your data is always synced and accessible across all your devices (laptop, tablet, phone) through any modern web browser.",
+                    faq4q: "What happens to my data? Is it private and secure?",
+                    faq4a: "Absolutely. We believe in data ownership. Your data is yours, stored securely. For tools that operate locally, it never leaves your device. For cloud tools, it's encrypted. We will never see, sell, or share your data.",
+                    faq5q: "Which tools are currently available?",
+                    faq5a: "Our current suite includes the Productivity Hub, Finance Manager Pro, Professional AI Assistant (BYOK), and the Bookmarks Manager. DashLite and other tools are in development. Buying the Forever Bundle gives you access to them as soon as they launch!",
+                    moreToolsTitle: "Explore the 4everTools Suite",
+                    moreToolsDesc: "Part of the 'Democratizing Digital Solutions' ecosystem.",
+                    tool1Title: "Productivity Hub",
+                    tool1Desc: "Your all-in-one productivity suite.",
+                    available: "Available",
+                    tool2Title: "Finance Manager Pro",
+                    tool2Desc: "Track budgets, income, and cash flow.",
+                    tool3Title: "AI Assistant (BYOK)",
+                    tool3Desc: "Your private, secure AI workspace.",
+                    tool4Title: "Bookmarks Manager",
+                    tool4Desc: "Organize your digital resources.",
+                    tool5Title: "DashLite",
+                    tool5Desc: "Custom desktop dashboards.",
+                    planned: "Planned",
+                    footerText: "&copy; 2025 4everTools. Part of the Democratizing Digital Solutions movement.",
+                    privacy: "Privacy Policy",
+                    terms: "Terms of Service",
+                    contact: "Contact"
+                },
+                es: {
+                    loginBtn: "Ver Herramientas",
+                    heroSubtitle: "PAGA UNA VEZ. POSÉELO PARA SIEMPRE.",
+                    heroTitle: "Tu Caja de Herramientas Digital para Trabajo, Productividad e Independencia.",
+                    heroDescription: "¿Cansado de suscripciones interminables? 4everTools ofrece un conjunto de herramientas digitales de alta calidad con acceso de por vida. Potencia tu trabajo, aumenta la productividad y logra la independencia digital.",
+                    heroCta: "Explora los Paquetes Vitalicios",
+                    demo: "Suite Digital 4everTools",
+                    missionTitle: "Más Que una App. <span class='text-primary'>Es una Misión.</span>",
+                    missionDescription: "Estamos en una misión para democratizar el software. Tu compra única no solo te da una aplicación increíble, sino que impulsa la creación de todo un ecosistema. No eres solo un cliente; eres un pilar fundamental en el movimiento contra la fatiga de suscripciones.",
+                    step1Title: "Elige Tu Herramienta",
+                    step1Desc: "Selecciona una única herramienta de por vida o adquiere el Paquete Eterno para un acceso completo.",
+                    step2Title: "Impulsa Tu Flujo de Trabajo",
+                    step2Desc: "Integra nuestras potentes aplicaciones en tus tareas diarias para ganancias de productividad inmediatas.",
+                    step3Title: "Adquiere Tu Independencia Digital",
+                    step3Desc: "Disfruta de actualizaciones de por vida y libérate de pagos recurrentes. Tus herramientas, tus datos, para siempre.",
+                    getStartedCta: "Empieza de por Vida",
+                    joinUsers: "Únete a miles de usuarios empoderados hoy",
+                    featuresTitle: "Una Caja de Herramientas Completa para Cada Necesidad.",
+                    featuresDesc: "Desde organizar tu vida hasta gestionar finanzas y aprovechar la IA, tenemos una herramienta de por vida diseñada para ti.",
+                    feature1Title: "Centro de Productividad",
+                    feature1Desc: "Un panel inspirado en Notion para tus tareas, notas, proyectos y metas.",
+                    feature2Title: "Finance Manager Pro",
+                    feature2Desc: "Toma el control con un rastreador intuitivo de presupuesto, flujo de caja e ingresos.",
+                    feature3Title: "DashLite",
+                    feature3Desc: "Crea paneles de escritorio personalizados para un acceso rápido a tus análisis más importantes.",
+                    feature4Title: "Asistente de IA Profesional",
+                    feature4Desc: "Aprovecha la IA con tu propia clave de API (BYOK) para un asistente seguro y privado.",
+                    feature5Title: "Gestor de Marcadores",
+                    feature5Desc: "Organiza, guarda y etiqueta tus enlaces web y recursos de investigación de manera eficiente.",
+                    feature6Title: "La Promesa Eterna",
+                    feature6Desc: "Todas las herramientas incluyen actualizaciones de por vida, sincronización multidispositivo y nuestro compromiso de no tener suscripciones.",
+                    pricingTitle: "Encuentra Tu Plan Eterno.",
+                    pricingDesc: "Ya sea que necesites una herramienta, todas, o un acceso flexible, tenemos un plan simple para ti. Sin cargos ocultos, nunca.",
+                    price1Title: "Herramienta Individual",
+                    oneTime: "/ pago único",
+                    price1Feat1: "Acceso vitalicio a <strong>una herramienta</strong>",
+                    price1Feat2: "Todas las futuras actualizaciones para esa herramienta",
+                    price1Feat3: "Perfecto para necesidades específicas",
+                    price1Cta: "Elige Tu Herramienta",
+                    bestValue: "MEJOR VALOR",
+                    price2Title: "Paquete Eterno",
+                    price2Feat1: "Acceso vitalicio a <strong>TODAS las herramientas</strong>",
+                    price2Feat2: "<strong>Todos los productos futuros</strong> incluidos",
+                    price2Feat3: "Ahorro masivo en un solo pago",
+                    price2Feat4: "Conviértete en un pilar fundamental",
+                    price2Cta: "Adquiérelo Todo Para Siempre",
+                    price3Title: "Pase de Acceso Total",
+                    perMonth: "/ mes",
+                    price3Feat1: "Accede a todas las herramientas actuales",
+                    price3Feat2: "Nuevas herramientas a medida que se lanzan",
+                    price3Feat3: "Cancela en cualquier momento",
+                    price3Cta: "Suscríbete Ahora",
+                    faqTitle: "Preguntas Frecuentes",
+                    faq1q: "¿Qué significa 'acceso vitalicio'?",
+                    faq1a: "Significa que pagas una vez y obtienes acceso al producto(s) que compraste y a todas sus futuras actualizaciones mientras el producto exista. Sin cargos recurrentes, nunca. Es un trato único.",
+                    faq2q: "¿Qué es BYOK (Trae Tu Propia Clave)?",
+                    faq2a: "Significa que usas tu propia clave de API de servicios como OpenAI para nuestro Asistente de IA. Esto te da control total sobre tu uso y datos, asegurando máxima privacidad y seguridad. Solo pagas por lo que usas directamente al proveedor de IA.",
+                    faq3q: "¿Son aplicaciones nativas o web?",
+                    faq3a: "Todos los productos de 4everTools son aplicaciones web basadas en la nube. Esto asegura que tus datos estén siempre sincronizados y accesibles en todos tus dispositivos (laptop, tablet, teléfono) a través de cualquier navegador web moderno.",
+                    faq4q: "¿Qué pasa con mis datos? ¿Son privados y seguros?",
+                    faq4a: "Absolutamente. Creemos en la propiedad de los datos. Tus datos son tuyos, almacenados de forma segura. Para herramientas que operan localmente, nunca salen de tu dispositivo. Para herramientas en la nube, están encriptados. Nunca veremos, venderemos ni compartiremos tus datos.",
+                    faq5q: "¿Qué herramientas están disponibles actualmente?",
+                    faq5a: "Nuestra suite actual incluye el Centro de Productividad, Finance Manager Pro, Asistente de IA Profesional (BYOK) y el Gestor de Marcadores. DashLite y otras herramientas están en desarrollo. ¡Comprar el Paquete Eterno te da acceso a ellas tan pronto como se lancen!",
+                    moreToolsTitle: "Explora la Suite 4everTools",
+                    moreToolsDesc: "Parte del ecosistema de 'Democratizando Soluciones Digitales'.",
+                    tool1Title: "Centro de Productividad",
+                    tool1Desc: "Tu suite de productividad todo en uno.",
+                    available: "Disponible",
+                    tool2Title: "Finance Manager Pro",
+                    tool2Desc: "Controla presupuestos, ingresos y flujo de caja.",
+                    tool3Title: "Asistente IA (BYOK)",
+                    tool3Desc: "Tu espacio de trabajo IA privado y seguro.",
+                    tool4Title: "Gestor de Marcadores",
+                    tool4Desc: "Organiza tus recursos digitales.",
+                    tool5Title: "DashLite",
+                    tool5Desc: "Paneles de escritorio personalizados.",
+                    planned: "Planeado",
+                    footerText: "&copy; 2025 4everTools. Parte del movimiento Democratizando Soluciones Digitales.",
+                    privacy: "Política de Privacidad",
+                    terms: "Términos de Servicio",
+                    contact: "Contacto"
+                }
+            };
+
+            const translationToggle = document.getElementById('translationToggle');
+            let currentLang = 'en';
+
+            const translatePage = (lang) => {
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        // Use innerHTML for keys that contain HTML tags
+                        if (['missionTitle', 'price1Feat1', 'price2Feat1', 'price2Feat2'].includes(key)) {
+                            el.innerHTML = translations[lang][key];
+                        } else {
+                            el.innerText = translations[lang][key];
+                        }
+                    }
+                });
+                document.documentElement.lang = lang;
+                translationToggle.title = lang === 'en' ? 'Translate to Spanish' : 'Traducir a Inglés';
+            };
+            
+            translationToggle.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'es' : 'en';
+                translatePage(currentLang);
+            });
+        });
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.getElementById('playButton');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoThumbnail = document.querySelector('.video-thumbnail');
+            
+            playButton.addEventListener('click', function() {
+                // Hide the thumbnail and play button
+                videoThumbnail.style.opacity = '0';
+                playButton.style.display = 'none';
+                
+                // Show and play the video
+                videoPlayer.style.display = 'block';
+                videoPlayer.play();
+                
+                // Add a slight delay before removing elements completely
+                setTimeout(() => {
+                    videoThumbnail.style.display = 'none';
+                }, 300);
+            });
+            
+            // When video ends, show the thumbnail and play button again
+            videoPlayer.addEventListener('ended', function() {
+                videoThumbnail.style.display = 'block';
+                videoThumbnail.style.opacity = '1';
+                playButton.style.display = 'flex';
+                videoPlayer.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
