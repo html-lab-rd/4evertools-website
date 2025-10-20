@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/dec666c4bc2ac137ee26abec65c50df25aeb1867.png">
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/b81ca864affb6311afa662ccb36a290aa2a0c9e3.png">
 
     <style>
         :root {
@@ -184,9 +184,26 @@
         @media (min-width: 1024px) { .browser-content { height: 700px; } }
 
         .slider-container {
-            -ms-overflow-style: none; scrollbar-width: none;
+            scrollbar-color: var(--primary) var(--card-color);
+            scrollbar-width: auto;
         }
-        .slider-container::-webkit-scrollbar { display: none; }
+        .slider-container::-webkit-scrollbar {
+            height: 12px;
+        }
+        .slider-container::-webkit-scrollbar-track {
+            background: var(--card-color);
+            border-radius: 10px;
+            margin: 0 1rem;
+            border: 1px solid var(--border-color);
+        }
+        .slider-container::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 10px;
+            border: 3px solid var(--card-color);
+        }
+        .slider-container::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary);
+        }
         .tool-card { flex: 0 0 80%; }
         @media (min-width: 640px) { .tool-card { flex: 0 0 45%; } }
         @media (min-width: 1024px) { .tool-card { flex: 0 0 30%; } }
@@ -352,6 +369,11 @@
                 box-shadow: 0 0 0 0 rgba(223, 23, 131, 0);
             }
         }
+
+        #toolsDropdown a:hover, #toolsDropdown a:active {
+            background-color: #DF1783;
+            color: white;
+        }
     </style>
 </head>
 <body class="dark"> <!-- Default to dark theme -->
@@ -360,41 +382,41 @@
     <div class="top-menu-bar">
         <div class="top-menu-content">
             <div class="logo-container">
-                <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/73bfb5aecd9f1ee85739b398f2bf330d3e9c390a.png" alt="4everTools Logo">
+                <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/b81ca864affb6311afa662ccb36a290aa2a0c9e3.png" alt="4everTools Logo">
                 <span id="appBrandNameDisplay" class="hidden sm:inline">
                     4ever<span style="background: linear-gradient(145deg, #8c318f, #df1783); -webkit-background-clip: text; background-clip: text; color: transparent;">Tools</span>
                 </span>
             </div>
             <div class="top-menu-actions">
 
-                <div class="fab" id="homeBtn" title="Home" onclick="window.open('https://4evertools.com', '_blank')"><i class="fa fa-home"></i></div>
+                <div class="fab" id="homeBtn" title="Home" onclick="window.open('https://4evertools.com', '_blank')"><i class="fas fa-home"></i></div>
 
 
 
-              
+                
                 <!-- Tools Dropdown -->
                 <div class="relative" id="toolsDropdownContainer">
                     <div class="fab" id="toolsBtn" title="Tools">
-                        <i class="fa fa-caret-square-o-down"></i>
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
                     </div>
                     <div id="toolsDropdown" class="absolute right-0 mt-2 w-56 rounded-md shadow-lg z-10 hidden" style="background-color: var(--card-color); border: 1px solid var(--border-color);">
                         <div class="py-1">
-                            <a href="/p/productivity-hub" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">Productivity Hub</a>
-                            <a href="/p/finance-manager-pro" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">Finance Manager Pro</a>
-                            <a href="/p/dashlite" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">DashLite</a>
-                            <a href="/p/bookmarks-manager" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">Bookmarks Manager</a>
-                            <a href="/p/ai-assistant" class="block px-4 py-2 text-sm hover:bg-primary/10" style="color: var(--subtext-color);">AI Assistant</a>
+                            <a href="/p/productivity-hub" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">Productivity Hub</a>
+                            <a href="/p/finance-manager-pro" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">Finance Manager Pro</a>
+                            <a href="/p/dashlite" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">DashLite</a>
+                            <a href="/p/bookmarks-manager" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">Bookmarks Manager</a>
+                            <a href="/p/ai-assistant" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">AI Assistant</a>
                         </div>
                     </div>
                 </div>
 
 
-              
-              
-                <div class="fab" title="Help Center" onclick="showToast('Help center will be available soon!')"><i class="fa fa-info-circle"></i></div>
-                <div class="fab" id="translationToggle" title="Translate to Spanish"><i class="fa fa-globe"></i></div>
+                
+                
+                <div class="fab" title="Help Center" onclick="showToast('Help center will be available soon!')"><i class="fas fa-info-circle"></i></div>
+                <div class="fab" id="translationToggle" title="Translate to Spanish"><i class="fas fa-globe"></i></div>
                 <div class="fab" id="darkModeToggle" title="Change Theme"><i class="fas fa-moon"></i></div>
-                <button id="loginBtn" class="btn-primary ml-2 hidden sm:block" data-lang-key="loginBtn">View Tools</button>
+                <a href="p/toolbox" id="loginBtn" class="inline-block text-center ml-2 hidden sm:block" data-lang-key="loginBtn">Open Toolbox</a>
             </div>
         </div>
     </div>
@@ -403,7 +425,7 @@
         <!-- Hero Section -->
         <section class="pt-20 md:pt-32">
             <div class="container mx-auto px-6 text-center">
-                <span class="text-sm font-extrabold text-primary uppercase tracking-wider" data-lang-key="heroSubtitle">PAY ONCE. OWN FOREVER.</span>
+                <span class="text-sm font-extrabold text-primary uppercase tracking-wider" data-lang-key="heroSubtitle">WELCOME TO 4EVERTOOLS.</span>
                 <h1 class="text-5xl md:text-7xl font-extrabold text-main mt-4 mb-6 max-w-5xl mx-auto" data-lang-key="heroTitle">Your Digital Toolbox for Work, Productivity, and Independence.</h1>
                 <p class="text-lg md:text-xl text-subtle max-w-3xl mx-auto mb-10" data-lang-key="heroDescription">
                     Tired of endless subscriptions? 4everTools offers a suite of high-quality, lifetime-access digital tools. Empower your work, boost productivity, and achieve digital independence.
@@ -422,13 +444,13 @@
                         <div class="browser-dot yellow"></div>
                         <div class="browser-dot green"></div>
                         <div class="browser-url" data-lang-key="demo">
-                           4everTools Digital Suite
+                            4everTools Digital Suite
                         </div>
                     </div>
                     
                     <div class="video-container">
                         <!-- Video thumbnail -->
-                        <img src="https://placehold.co/1200x675/1a202c/e2e8f0?text=4everTools+Suite" alt="4everTools Suite Demo" class="video-thumbnail">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/ffaef59c90f85d909ca648a592882980234a5e37.gif" alt="4everTools Suite Demo" class="video-thumbnail">
                         
                         <!-- Play button -->
                         <div class="play-button" id="playButton">
@@ -453,7 +475,7 @@
             
             <div class="container mx-auto px-6 text-center">
                 <h3 class="text-3xl md:text-4xl font-bold text-main mb-4" data-lang-key="missionTitle">
-                    More Than an App. <span class="text-primary">It's a Mission.</span>
+                    More Than Digital Tools. <span class="text-primary">It's a Mission.</span>
                 </h3>
                 <p class="text-lg text-subtle max-w-3xl mx-auto mb-10" data-lang-key="missionDescription">
                      We're on a mission to democratize software. Your one-time purchase doesn't just get you an amazing app—it fuels the creation of an entire ecosystem. You're not just a customer; you're a foundational supporter in the movement against subscription fatigue.
@@ -461,7 +483,7 @@
             </div>
         </section>
 
-      
+        
 
         <!-- How It Works Section -->
         <section class="py-20">
@@ -473,7 +495,7 @@
                     <div class="flex flex-col items-center step-card">
                         <div class="relative">
                             <div class="w-20 h-20 flex items-center justify-center rounded-full step-icon-bg border-2 border-primary mb-6">
-                                <i data-lucide="box-select" class="w-10 h-10 text-primary"></i>
+                                <i data-lucide="credit-card" class="w-10 h-10 text-primary"></i>
                             </div>
                             <div class="step-number">1</div>
                         </div>
@@ -510,7 +532,7 @@
                 <div class="text-center mt-16">
                     <div class="flex justify-center gap-4">
                         <a href="#pricing" class="cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="getStartedCta">
-                           Get Started for Life
+                            Get Started for Life
                         </a>
                     </div>
                     <p class="text-subtle mt-4 text-sm" data-lang-key="joinUsers">Join thousands of empowered users today</p>
@@ -529,27 +551,27 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="feature-card rounded-lg p-8 text-center">
-                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Productivity+Hub" alt="Productivity Hub" class="rounded-md mb-6 mx-auto">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/856d695f5b8abfeedde76ad44a31db369898b62b.png" alt="Productivity Hub" class="rounded-md mb-6 mx-auto">
                         <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature1Title">Productivity Hub</h4>
                         <p class="text-subtle" data-lang-key="feature1Desc">Notion-inspired dashboard for your tasks, notes, projects, and goals.</p>
                     </div>
                     <div class="feature-card rounded-lg p-8 text-center">
-                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Finance+Manager" alt="Finance Manager Pro" class="rounded-md mb-6 mx-auto">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/5d3418f1783da5cb859ab0b555958b834364b02a.png" alt="Finance Manager Pro" class="rounded-md mb-6 mx-auto">
                         <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature2Title">Finance Manager Pro</h4>
                         <p class="text-subtle" data-lang-key="feature2Desc">Take control with an intuitive budget, cash flow, and income tracker.</p>
                     </div>
                      <div class="feature-card rounded-lg p-8 text-center">
-                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=DashLite" alt="DashLite" class="rounded-md mb-6 mx-auto">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/673ffe015c25469f1e200c6e479a0f2f5c8646b9.gif" alt="DashLite" class="rounded-md mb-6 mx-auto">
                         <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature3Title">DashLite</h4>
                         <p class="text-subtle" data-lang-key="feature3Desc">Create custom desktop dashboards for quick access to your most important analytics.</p>
                     </div>
                     <div class="feature-card rounded-lg p-8 text-center">
-                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=AI+Assistant" alt="AI Assistant" class="rounded-md mb-6 mx-auto">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/8331f0918a2ab774ff04a08df9221f4a31a9dbda.png" alt="AI Assistant" class="rounded-md mb-6 mx-auto">
                         <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature4Title">Professional AI Assistant</h4>
                         <p class="text-subtle" data-lang-key="feature4Desc">Leverage AI with your own API key (BYOK) for a secure, private assistant.</p>
                     </div>
                     <div class="feature-card rounded-lg p-8 text-center">
-                        <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Bookmarks" alt="Bookmarks Manager" class="rounded-md mb-6 mx-auto">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/e2689dc97e6bc5ad1607f73f2d542e726a35d6b8.png" alt="Bookmarks Manager" class="rounded-md mb-6 mx-auto">
                         <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature5Title">Bookmarks Manager</h4>
                         <p class="text-subtle" data-lang-key="feature5Desc">Organize, save, and tag your web links and research resources efficiently.</p>
                     </div>
@@ -561,6 +583,11 @@
                 </div>
             </div>
         </section>
+
+
+
+
+
 
         <!-- Pricing Section -->
         <section id="pricing" class="py-20 md:py-28">
@@ -598,14 +625,14 @@
                             <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price2Feat3">Massive one-time saving</span></li>
                             <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price2Feat4">Become a foundational supporter</span></li>
                         </ul>
-                        <a href="#" class="block w-full mt-8 cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price2Cta">Own Everything Forever</a>
+                        <a href="https://4evertools.gumroad.com/l/4evertools?wanted=true" class="block w-full mt-8 cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price2Cta">Own Everything Forever</a>
                     </div>
 
                     <!-- Pricing Card 3: Monthly -->
                     <div class="price-card rounded-lg p-8 h-full flex flex-col">
                         <h4 class="text-2xl font-bold text-main" data-lang-key="price3Title">All-Access Pass</h4>
                         <div class="flex items-baseline justify-center my-6">
-                            <span class="text-5xl font-extrabold text-main">$19</span>
+                            <span class="text-5xl font-extrabold text-main">$49</span>
                             <span class="ml-2 text-xl font-medium text-subtle" data-lang-key="perMonth">/ month</span>
                         </div>
                         <ul class="text-left space-y-3 text-subtle flex-grow">
@@ -613,9 +640,15 @@
                             <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price3Feat2">New tools as they launch</span></li>
                             <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-3"></i><span data-lang-key="price3Feat3">Cancel anytime</span></li>
                         </ul>
-                        <a href="#" class="block w-full mt-8 cta-button bg-primary/20 text-primary border border-primary/30 font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price3Cta">Subscribe Now</a>
+                        <a href="https://4evertools.gumroad.com/l/4evertools?wanted=true" class="block w-full mt-8 cta-button bg-primary/20 text-primary border border-primary/30 font-bold py-4 px-8 rounded-lg text-lg" data-lang-key="price3Cta">Subscribe Now</a>
                     </div>
                 </div>
+                
+                <!-- Payment Banner -->
+                <div class="mt-16 flex justify-center">
+                    <img src="https://bucket.mlcdn.com/a/3336/3336910/images/a4f300e79c857061438321afbca6169bc14c3f68.png" alt="Payment methods accepted" class="max-w-xs w-full">
+                </div>
+
             </div>
         </section>
 
@@ -674,25 +707,30 @@
             </div>
         </section>
 
-        <!-- More Tools Section -->
+
+
+
+
+        
+         <!-- More Tools Section -->
         <section class="py-20 md:py-28">
             <div class="container mx-auto">
                  <div class="text-center mb-12 px-6">
-                    <h3 class="text-3xl md:text-4xl font-bold text-main" data-lang-key="moreToolsTitle">Explore the 4everTools Suite</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold text-main" data-lang-key="moreToolsTitle">Other Tools You'll Love</h3>
                     <p class="text-lg text-subtle mt-4 max-w-2xl mx-auto" data-lang-key="moreToolsDesc">Part of the "Democratizing Digital Solutions" ecosystem.</p>
                 </div>
                 
                 <div class="relative">
                     <div id="slider" class="slider-container flex overflow-x-auto snap-x snap-mandatory gap-6 px-6 pb-6">
                         <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
-                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Productivity+Hub" alt="Productivity Hub Thumbnail" class="w-full h-48 object-cover">
+                           <img src="https://bucket.mlcdn.com/a/3336/3336910/images/c324d31c16d4975eab01e077aa5e923776bcab74.jpeg" alt="Headquarters Thumbnail" class="w-full h-48 object-cover">
                            <div class="p-6">
                                <div class="flex justify-between items-start">
                                    <div>
-                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool1Title">Productivity Hub</h4>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool1Title">Headquarters</h4>
                                        <p class="text-subtle mt-1" data-lang-key="tool1Desc">Your all-in-one productivity suite.</p>
                                    </div>
-                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
+                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="comingSoon">Published</span>
                                </div>
                                <div class="flex gap-2 mt-4">
                                    <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Productivity</span>
@@ -701,46 +739,14 @@
                            </div>
                        </a>
                         <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
-                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Finance+Manager" alt="Finance Manager Thumbnail" class="w-full h-48 object-cover">
+                           <img src="https://bucket.mlcdn.com/a/3336/3336910/images/30dc9b39c4a738d212ef4afb1f40cf5d76544002.jpeg" alt="Bookmarks Manager Thumbnail" class="w-full h-48 object-cover">
                            <div class="p-6">
                                <div class="flex justify-between items-start">
                                    <div>
-                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool2Title">Finance Manager Pro</h4>
-                                       <p class="text-subtle mt-1" data-lang-key="tool2Desc">Track budgets, income, and cash flow.</p>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool2Title">Bookmarks Manager</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool2Desc">Manage client relationships with ease.</p>
                                    </div>
-                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
-                               </div>
-                               <div class="flex gap-2 mt-4">
-                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Finance</span>
-                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
-                               </div>
-                           </div>
-                       </a>
-                       <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
-                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=AI+Assistant" alt="AI Assistant Thumbnail" class="w-full h-48 object-cover">
-                           <div class="p-6">
-                               <div class="flex justify-between items-start">
-                                   <div>
-                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool3Title">AI Assistant (BYOK)</h4>
-                                       <p class="text-subtle mt-1" data-lang-key="tool3Desc">Your private, secure AI workspace.</p>
-                                   </div>
-                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
-                               </div>
-                               <div class="flex gap-2 mt-4">
-                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">AI</span>
-                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
-                               </div>
-                           </div>
-                       </a>
-                       <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
-                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Bookmarks" alt="Bookmarks Manager Thumbnail" class="w-full h-48 object-cover">
-                           <div class="p-6">
-                               <div class="flex justify-between items-start">
-                                   <div>
-                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool4Title">Bookmarks Manager</h4>
-                                       <p class="text-subtle mt-1" data-lang-key="tool4Desc">Organize your digital resources.</p>
-                                   </div>
-                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="available">Available</span>
+                                   <span class="text-xs bg-green-500/80 text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="comingSoon">Published</span>
                                </div>
                                <div class="flex gap-2 mt-4">
                                    <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Organization</span>
@@ -748,27 +754,70 @@
                                </div>
                            </div>
                        </a>
-                        <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
-                           <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=DashLite" alt="DashLite Thumbnail" class="w-full h-48 object-cover">
+                       <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                           <img src="https://bucket.mlcdn.com/a/3336/3336910/images/7585272ac4f819e3f067e1201f8f62e328643182.png" alt="DashLite Thumbnail" class="w-full h-48 object-cover">
                            <div class="p-6">
                                <div class="flex justify-between items-start">
                                    <div>
-                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool5Title">DashLite</h4>
-                                       <p class="text-subtle mt-1" data-lang-key="tool5Desc">Custom desktop dashboards.</p>
+                                       <h4 class="text-xl font-bold text-main" data-lang-key="tool3Title">Desktop Workspace</h4>
+                                       <p class="text-subtle mt-1" data-lang-key="tool3Desc">A simple way to track your investments.</p>
                                    </div>
                                    <span class="text-xs bg-secondary text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="planned">Planned</span>
                                </div>
                                <div class="flex gap-2 mt-4">
-                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Analytics</span>
+                                   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Organization</span>
                                    <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
                                </div>
                            </div>
                        </a>
+
+
+
+
+ <!-- Tool Card 4 -->
+                        <a href="#" class="tool-card block snap-center w-full rounded-lg overflow-hidden shadow-lg hover:shadow-primary/30 transition-shadow duration-300">
+                            
+
+<img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Focus+Timer" alt="Focus Timer Thumbnail" class="w-full h-48 object-cover">
+                           <div class="p-6">
+                                <div class="flex justify-between items-start">
+                                    
+<div>
+                                        <h4 class="text-xl font-bold text-main" data-lang-key="tool3Title">Focus Timer</h4>
+                                        <p class="text-subtle mt-1" data-lang-key="tool3Desc">A Pomodoro timer with purpose.</p>
+                                    </div>
+
+
+                                    <span class="text-xs bg-secondary text-white font-semibold py-1 px-3 rounded-full whitespace-nowrap" data-lang-key="planned">Planned</span>
+                                </div>
+
+
+                                <div class="flex gap-2 mt-4">
+                           <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">Productivity</span>
+   <span class="text-xs bg-primary text-white py-1 px-2 rounded-md">LTD</span>
+                                </div>
+
+
+                           </div>
+                        </a>
+
+
+
+
                     </div>
                 </div>
             </div>
         </section>
+
+        
     </main>
+
+
+
+
+
+
+    
 
     <!-- Footer Section -->
     <footer class="bg-card border-t border-border-color">
@@ -781,6 +830,11 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top" class="hidden fixed z-50 bottom-8 right-8 w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-lg hover:bg-secondary transition-all duration-300">
+        <i class="fas fa-arrow-up text-xl"></i>
+    </button>
 
     <!-- AlpineJS for FAQ dropdown -->
     <script src="//unpkg.com/alpinejs" defer></script>
@@ -1023,6 +1077,25 @@
                 currentLang = currentLang === 'en' ? 'es' : 'en';
                 translatePage(currentLang);
             });
+
+            // --- BACK TO TOP BUTTON ---
+            const backToTopBtn = document.getElementById('backToTopBtn');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.add('hidden');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
         });
     </script>
     
@@ -1058,5 +1131,3 @@
     </script>
 </body>
 </html>
-
-
