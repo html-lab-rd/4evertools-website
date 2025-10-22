@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Favicon -->
-    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/b81ca864affb6311afa662ccb36a290aa2a0c9e3.png">
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/a2da3ec2a1a0b600257b358ac17e6c002f33c6bf.png">
 
     <style>
         :root {
@@ -144,8 +144,8 @@
              transition: all 0.3s ease;
         }
         #loginBtn:hover {
-             transform: translateY(-2px);
-             box-shadow: 0 4px 15px rgba(223, 23, 131, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(223, 23, 131, 0.4);
         }
 
         .browser-container {
@@ -223,7 +223,7 @@
             transition: all 0.3s ease;
             color: #df1783;
         }
-        .feature-card:hover .step-icon-bg {
+        .step-card:hover .step-icon-bg {
             transform: scale(1.05);
             box-shadow: 0 10px 25px -5px rgba(223, 23, 131, 0.3);
         }
@@ -271,11 +271,11 @@
             border: 1px solid var(--border-color);
         }
         
-       .price-card:hover {
+        .price-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 25px 50px -12px rgba(223, 23, 131, 0.25);
         }
-       .price-card.featured {
+        .price-card.featured {
             border: 2px solid var(--primary);
             transform: scale(1.05);
         }
@@ -286,7 +286,7 @@
              box-shadow: 0 25px 50px -12px rgba(223, 23, 131, 0.45);
         }
         
-       .best-value-badge {
+        .best-value-badge {
             position: absolute;
             top: -1px;
             left: 50%;
@@ -381,6 +381,7 @@
             color: white;
         }
     </style>
+    
 </head>
 <body class="dark"> <!-- Default to dark theme -->
 
@@ -390,7 +391,7 @@
             <div class="logo-container">
                 <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/a2da3ec2a1a0b600257b358ac17e6c002f33c6bf.png" alt="Domain Manager Logo">
                 <span id="appBrandNameDisplay" class="hidden sm:inline">
-                    Domain<span style="background: linear-gradient(145deg, #8c318f, #df1783); -webkit-background-clip: text; background-clip: text; color: transparent;">Manager</span>
+                    Domain <span style="background: linear-gradient(145deg, #8c318f, #df1783); -webkit-background-clip: text; background-clip: text; color: transparent;">Manager</span>
                 </span>
             </div>
             <div class="top-menu-actions">
@@ -412,6 +413,8 @@
                             <a href="/p/dashlite" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">DashLite</a>
                             <a href="/p/bookmarks-manager" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">Bookmarks Manager</a>
                             <a href="/p/ai-assistant" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">AI Assistant</a>
+                            <a href="/p/domain-manager" class="block px-4 py-2 text-sm text-subtle transition-colors duration-200">AI Assistant</a>
+
                         </div>
                     </div>
                 </div>
@@ -463,7 +466,7 @@
                         <div class="browser-dot yellow"></div>
                         <div class="browser-dot green"></div>
                         <div class="browser-url" data-lang-key="demo">
-                            4everTools Digital Suite
+                            Domain Manager by 4EverTools
                         </div>
                     </div>
                     
@@ -489,6 +492,172 @@
     
             </div>
         </section>
+
+
+
+
+ <!-- Features Section -->
+        <section id="features" class="py-20 md:py-28 relative bg-cover bg-center" style="background-image: url('https://bucket.mlcdn.com/a/3336/3336910/images/dc515a92554f439d325e88e31acc0fd25e4f44da.jpeg');">
+            <!-- Features Overlay -->
+            <div class="absolute inset-0 bg-black/20 backdrop-blur-"></div>
+            <!-- Features Container -->
+            <div class="container mx-auto px-6 relative">
+                <div class="text-center mb-16">
+                    <h3 class="text-3xl md:text-4xl font-bold text-white" data-lang-key="featuresTitle">One App to Rule Your Tasks.</h3>
+                    <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto" data-lang-key="featuresDesc">All the essential tools you need, consolidated into one beautiful, bloat-free experience.</p>
+                </div>
+                
+                <!-- Features Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature Card 1: Dashboard -->
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/9a3022c3ddfeda21fbce3b5f2445279bc467f79d.png" alt="Dashboard" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature1Title">Your Command Center</h4>
+                        <p class="text-subtle" data-lang-key="feature1Desc">Start your day with a clear overview of everything on your plate. Your tasks, events, and notes, all in one place.</p>
+                    </div>
+
+                    <!-- Feature Card 2: Customization -->
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/213691be4107318dd9b845c1ac4ae8f4e0c3245f.png" alt="Customization" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature6Title">Your Workspace, Your Vibe</h4>
+                        <p class="text-subtle" data-lang-key="feature6Desc">Personalize your dashboard with themes, colors, and layouts that fit your unique style and workflow.</p>
+                    </div>
+
+                    <!-- Feature Card 3: Kanban -->
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/ad5ac3360363887d803ec64782b578aa8ad47a73.png" alt="Kanban" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature2Title">Visualize Your Workflow</h4>
+                        <p class="text-subtle" data-lang-key="feature2Desc">Manage complex projects with ease using flexible Kanban boards. Drag, drop, and get things done.</p>
+                    </div>
+
+                    <!-- Feature Card 4: Notes -->
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/7a0b23cf958baccf0fb5554dcea680154a1fc70d.png" alt="Notes" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature4Title">Your Private Corner of the Cloud</h4>
+                        <p class="text-subtle" data-lang-key="feature4Desc">A secure space for your thoughts, ideas, and plans. Your data is yours, accessible from anywhere.</p>
+                    </div>
+
+                    <!-- Feature Card 5: Tasks -->
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/a3a81a8f0c1b10cde99db2834bf36312ac39658c.png" alt="Tasks" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature5Title">Focus on What Matters</h4>
+                        <p class="text-subtle" data-lang-key="feature5Desc">Simple, powerful task management. Prioritize your to-do list and never miss a deadline again.</p>
+                    </div>
+
+                    <!-- Feature Card 6: Calendar -->
+                    <div class="feature-card rounded-lg p-8 text-center">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/6413aaa379525703f19b0f44cb3da5ed46e74f5d.png" alt="Calendar" class="rounded-md mb-6 mx-auto">
+                        <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature3Title">Master Your Schedule</h4>
+                        <p class="text-subtle" data-lang-key="feature3Desc">An intuitive calendar that keeps your life organized and syncs seamlessly across your devices.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing / CTA Section -->
+        <section id="pricing" class="py-12 md:py-20 bg-transparent">
+            <div class="px-6 text-center">
+
+                <h3 class="text-3xl md:text-4xl font-bold text-main">Get Lifetime Access. Fuel the Mission.</h3>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4 mb-8">For a one-time payment, Headquarters is yours forever. No subscriptions, no hidden fees. Just a lifetime of productivity and the chance to support a new wave of accessible software.</p>
+                
+                <!-- Pricing Card -->
+                <div class="inline-block bg-white price-card rounded-lg p-6 md:p-8 border border-primary shadow-lg shadow-purple-200/50">
+
+                    <!-- Banner Image -->
+                    <div class="banner-container">
+                        <img src="https://bucket.mlcdn.com/a/3336/3336910/images/9fa3d5884ab8683b67320dc8df38a136014b7c40.jpeg" 
+                             alt="Special Offer Banner" 
+                             class="banner-image">
+                    </div>
+                    <div class="flex items-baseline justify-center">
+                        <span class="text-5xl font-extrabold text-gray-900">$49</span>
+                        <span class="ml-2 text-xl font-medium text-gray-600">/ one-time</span>
+                    </div>
+                    <p class="text-sm text-primary font-bold mt-2">LAUNCH WEEK SPECIAL</p>
+                    
+                    <ul class="text-left mt-6 space-y-3 text-gray-600">
+                        <li class="flex items-center benefit-item">
+                            <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Lifetime access to Headquarters
+                        </li>
+                        <li class="flex items-center benefit-item">
+                            <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Sync across all your devices
+                        </li>
+                        <li class="flex items-center benefit-item">
+                            <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            All future updates included
+                        </li>
+                        <li class="flex items-center benefit-item">
+                            <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Become a foundational supporter
+                        </li>
+                    </ul>
+                    
+                    <a href="https://4evertools.gumroad.com/l/productivity-hub?wanted=true" class="block w-full mt-8 cta-button gradient-bg text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300">
+                        Buy Now & Own It Forever
+                    </a>
+                    
+                    <div class="guarantee-badge">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        30-day money-back guarantee
+                    </div>
+                </div>
+                
+                <p class="text-gray-500 mt-4 text-sm">Price increases to $59 after launch week!</p>
+                
+                <!-- Trust indicators -->
+                <div class="mt-8 flex flex-wrap justify-center items-center gap-6 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-lock text-primary mr-2"></i>
+                        <span>Secure payment</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-primary mr-2"></i>
+                        <span>SSL encrypted</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-globe text-primary mr-2"></i>
+                        <span>Worldwide access</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
         <!-- Key Features Section -->
@@ -563,6 +732,8 @@
                         <h4 class="text-xl font-bold text-main mb-2" data-lang-key="feature7Title">Secure and Private</h4>
                         <p class="text-subtle" data-lang-key="feature7Desc">Your credentials and provider details are encrypted — always safe, always yours.</p>
                     </div>
+
+                    
 
                 </div>
             </div>
@@ -897,7 +1068,7 @@
     <!-- Footer Section -->
     <footer class="bg-card border-t border-border-color">
         <div class="container mx-auto px-6 py-8 text-center text-subtle">
-            <p data-lang-key="footerText">&copy; 2025 4everTools. Part of the Democratizing Digital Solutions movement.</p>
+            <p data-lang-key="footerText">&copy; 2025 4EverTools. Part of the Democratizing Digital Solutions movement.</p>
             <div class="mt-4 flex justify-center space-x-6">
                 <a href="#" class="hover:text-main" data-lang-key="privacy">Privacy Policy</a>
                 <a href="#" class="hover:text-main" data-lang-key="terms">Terms of Service</a>
