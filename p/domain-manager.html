@@ -26,6 +26,7 @@
     
     
     
+    
     <style>
         :root {
             --primary: #df1783;
@@ -185,15 +186,6 @@
             font-size: 0.875rem;
             text-align: center;
         }
-        /* Style for the image inside the browser container */
-        .browser-content img {
-            display: block;
-            width: 100%;
-            height: auto; /* Maintain aspect ratio */
-            max-height: 700px; /* Limit image height */
-            object-fit: cover; /* Cover the container */
-        }
-        @media (max-width: 768px) { .browser-content img { max-height: 400px; } }
        
 
         .slider-container {
@@ -369,11 +361,74 @@
         @media (max-width: 768px) { .w-full.mb-10 img { max-height: 500px; } }
         @media (max-width: 640px) { .w-full.mb-10 img { max-height: 550px; } }
 
-        /* Specific styles for feature icons */
-        .feature-icon-wrapper {
-             width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background-color: var(--card-color); border: 2px solid var(--primary); margin-bottom: 1.5rem; flex-shrink: 0;
+        /* Video Player Styles */
+        .video-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden; /* Ensures video doesn't spill out */
+            background-color: #000; /* Black background for video player */
+            line-height: 0; /* Remove potential extra space below image/video */
         }
-        .feature-icon-wrapper i { width: 40px; height: 40px; color: var(--primary); }
+        .video-thumbnail {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        .video-player {
+            width: 100%;
+            height: 100%; /* Ensure video takes full height */
+            display: none; /* Hide video player initially */
+            max-height: 700px; /* Match max-height from browser-content img */
+        }
+         @media (max-width: 768px) { .video-player { max-height: 400px; } }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(223, 23, 131, 0.8); /* Primary color with transparency */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 0 0 0 rgba(223, 23, 131, 0.7);
+            animation: pulse 1.5s infinite;
+        }
+        .video-container:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: rgba(223, 23, 131, 1); /* Solid primary on hover */
+            animation: none; /* Stop pulse on hover */
+        }
+        
+        /* When video is playing, hide thumbnail and play button */
+        .video-container.playing .video-thumbnail,
+        .video-container.playing .play-button {
+            display: none;
+        }
+        
+        .video-container.playing .video-player {
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(223, 23, 131, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(223, 23, 131, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(223, 23, 131, 0);
+            }
+        }
 
     </style>
 </head>
@@ -390,7 +445,7 @@
 
 
 
-   <!-- Tools Dropdown -->
+    <!-- Tools Dropdown -->
                 <div class="relative" id="toolsDropdownContainer">
                     <div class="fab" id="toolsBtn" title="Tools">
                         <i class="fa fa-th-list" aria-hidden="true"></i>
@@ -421,9 +476,17 @@
     </div>
 
     <main class="overflow-x-hidden">
-       <!-- Hero Section --><section class="pt-20 md:pt-32">
+       
+       
+       
+       
+       
+        <!-- Hero Section -->
+        
+        
+        <section class="pt-20 md:pt-32">
             <div class="container mx-auto px-6 text-center">
-                <span class="text-sm font-extrabold text-primary uppercase tracking-wider" data-lang-key="heroSubtitle">🌐 DOMAIN MANAGER</span>
+                <span class="text-sm font-extrabold text-primary uppercase tracking-wider" data-lang-key="heroSubtitle">DOMAIN MANAGER</span>
                 <h1 class="text-5xl md:text-7xl font-extrabold text-main mt-4 mb-6 max-w-5xl mx-auto" data-lang-key="heroTitle">Centralize. Organize. Never Lose a Domain Again.</h1>
                 <p class="text-lg md:text-xl text-subtle max-w-3xl mx-auto mb-10" data-lang-key="heroDescription">
                     Keep all your domains under control — from GoDaddy, Namecheap, IONOS, and more — in one clean, intuitive dashboard. With Domain Manager by 4everTools, you’ll always know what you own, when it expires, and how much it costs — so you never lose track again.
@@ -435,7 +498,8 @@
                     </a>
                 </div>
 
-                 <!-- Browser-like Video Container -->
+                
+                   <!-- Browser-like Video Container -->
                 <div class="browser-container">
                     <div class="browser-chrome">
                         <div class="browser-dot red"></div>
@@ -465,7 +529,7 @@
                 </div>
                 
 
-    
+   
             </div>
         </section>
 
@@ -672,7 +736,7 @@
                             <svg class="w-6 h-6 transform transition-transform text-white" :class="{'rotate-180': open === 3}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div x-show="open === 3" x-collapse.duration.300ms class="pb-6 text-white/80" data-lang-key="faq3a">
-                            All 4everTools products, including Domain Manager, are cloud-based web applications. This ensures your data is always accessible across all your devices (laptop, tablet, phone) through any modern web browser.
+                            All 4everTools products, including Domain Manager, are cloud-based web applications. This ensures your data is always accessible across all your devices (laptop, tablet, phone) through any modern web browser. (This is a web app)
                         </div>
                     </div>
                     <div class="border-b border-white/20">
@@ -813,6 +877,25 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
+            
+            // --- VIDEO PLAYER ---
+            const videoContainer = document.querySelector('.video-container');
+            const playButton = document.getElementById('playButton');
+            const videoPlayer = document.getElementById('videoPlayer');
+            const videoThumbnail = document.querySelector('.video-thumbnail');
+
+            if (videoContainer && playButton && videoPlayer && videoThumbnail) {
+                playButton.addEventListener('click', () => {
+                    videoContainer.classList.add('playing');
+                    videoPlayer.play();
+                });
+
+                // Optional: When video ends, show thumbnail again
+                videoPlayer.addEventListener('ended', () => {
+                    videoContainer.classList.remove('playing');
+                });
+            }
+
 
             // --- BACK TO TOP BUTTON ---
             const backToTopBtn = document.getElementById('backToTopBtn');
@@ -1063,34 +1146,8 @@
         });
     </script>
     
-    <!-- Removed video player script as it's not needed --></body>
+</body>
 </html>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-             
-
-
-
-
-
-    
-
-
-
-     
